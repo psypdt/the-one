@@ -9,9 +9,17 @@
 doc/stylesheet.css
 doc/resources/*.gif
 doc/package-list
+doc/*.zip
+doc/*.js
+doc/*.html
+doc/*
 
 # Eclipse IDE files
 .classpath
 .project
 /target/
 .settings/org.eclipse.*
+
+
+# Mac based config files
+.DS_store
