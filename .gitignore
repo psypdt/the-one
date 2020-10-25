@@ -20,6 +20,10 @@ doc/*
 /target/
 .settings/org.eclipse.*
 
+# Intellij
+compile_output_intellij/*
+.idea
+
 
 # Mac based config files
 .DS_store
