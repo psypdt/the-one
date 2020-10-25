@@ -11,14 +11,14 @@ wifiInterface.transmitSpeed = 7.5M
 wifiInterface.transmitRange = 100
 
 ## Number of groups involved in this scenario, Cars, Padestrians, Hospitals, etc.
-Scenario.nrofHostGroups = 3
+Scenario.nrofHostGroups = 4
 
 ## Default settings for all node groups
 Group.router = EpidemicRouter
 Group.bufferSize = 20M
 Group.nrofInterfaces = 1
 Group.interface1 = wifiInterface
-Group.msgTtl = 240
+Group.msgTtl = 200
 
 
 ## HOSPITALS IN HELSINKI
@@ -36,33 +36,51 @@ Group2.nrofHosts = 1
 Group2.movementModel = StationaryMovement
 Group2.nodeLocation = 1900, 1030
 
-
+# Eiran Hospital
+Group3.groupID = EH
+Group3.nrofHosts = 1
+Group3.movementModel = StationaryMovement
+Group3.nodeLocation = 2300, 2340
 
 ## MOBILE NODES THAT CAN MVE THROUGH HELSINKI
 
 # Vehicles
-Group3.groupID = K
-Group3.nrofHosts = 10
-Group3.movementModel = ShortestPathMapBasedMovement
-# Group3.okMaps = 1
-Group3.speed = 2.7, 13.9
+Group4.groupID = V
+Group4.nrofHosts = 20
+Group4.movementModel = ShortestPathMapBasedMovement
+Group4.nrofInterfaces = 1
+Group4.interface1 = wifiInterface
+Group4.speed = 2.7, 13.9
 
 
 
 ## Message Creation parameters
+
+# Number of event generators
 Events.nrof = 1
+
 Events1.class = MessageEventGenerator
 Events1.interval = 60, 120
 Events1.size = 10k, 100k
 
-# Indexes of nodes which can create these messages
-Events1.hosts = 2,11
+## Determine sender and receiver nodes. NOTE: Upper bound is exclusive
+# Indexes of nodes which can create these messages, all the moving cars but not the hospitals
+Events1.hosts = 3,23
+# The two hospitals are the destinations
+Events1.tohosts = 0,3
 Events1.prefix = M
 
 
 ## Movement model settings 
-MovementModel.worldSize = 4500, 3400
 MovementModel.rngSeed = 1
+MovementModel.worldSize = 4500, 3400
+MovementModel.warmup = 1000
+
+
+## Optimization settings -- these affect the speed of the simulation
+## see World class for details.
+Optimization.cellSizeMult = 5
+Optimization.randomizeUpdateOrder = true
 
 
 GUI.UnderlayImage.fileName = data/helsinki_underlay.png
@@ -72,3 +90,6 @@ GUI.UnderlayImage.offset = 64, 20
 GUI.UnderlayImage.scale = 4.75
 # Image rotation (radians)
 GUI.UnderlayImage.rotate = -0.015
+
+GUI.EventLogPanel.nrofEvents = 100
+
