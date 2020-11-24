@@ -22,7 +22,9 @@ import core.SimClock;
 import core.SimError;
 import routing.util.RoutingInfo;
 import util.Tuple;
-
+// TODO: Augment to account for emergency messages
+// TODO: New STR_Q mode for emergency messages
+// TODO:
 /**
  * Superclass for message routers.
  */
@@ -556,6 +558,7 @@ public abstract class MessageRouter {
 				}
 			});
 			break;
+			// TODO: Add case for Emergency message queue
 		/* add more queue modes here */
 		default:
 			throw new SimError("Unknown queue mode " + sendQueueMode);
@@ -587,6 +590,7 @@ public abstract class MessageRouter {
 				return 0;
 			}
 			return (diff < 0 ? -1 : 1);
+			// TODO: Case for Emergency message queue
 		/* add more queue modes here */
 		default:
 			throw new SimError("Unknown queue mode " + sendQueueMode);

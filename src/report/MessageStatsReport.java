@@ -134,7 +134,7 @@ public class MessageStatsReport extends Report implements MessageListener {
 		this.nrofStarted++;
 	}
 
-
+	// TODO: move this into a new function and let done() call that function
 	@Override
 	public void done() {
 		write("Message stats for scenario " + getScenarioName() +

@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+// TODO: Augment to allow for emergency messages to be identified, member var to check if message is emergency
+
 /**
  * A message that is created at a node or passed between nodes.
  */

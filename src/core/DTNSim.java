@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ui.DTNSimTextUI;
+// TODO: Create a new class EmergencyMessageCreateEvent which will create emergency messages (subclass MessageCreateEvent)
+// TODO: Create new class EmergencyMessageEventGenerator to generate emergency events (subclass MessageCreateEvent)
+// TODO: Create new class MessagePerClassStatsReport (subclass MessageListener)
 
 /**
  * Simulator's main class

@@ -330,7 +330,7 @@ public abstract class ActiveRouter extends MessageRouter {
 			if (excludeMsgBeingSent && isSending(m.getId())) {
 				continue; // skip the message(s) that router is sending
 			}
-
+			// TODO: Need to implement behaviour to not drop Emergency messages
 			if (oldest == null ) {
 				oldest = m;
 			}

@@ -4,7 +4,7 @@
 #
 
 ## Scenario settings
-Scenario.name = default_scenario
+Scenario.name = default_epidemic_scenario
 Scenario.simulateConnections = true
 Scenario.updateInterval = 0.1
 # 43200s == 12h
@@ -59,7 +59,14 @@ Scenario.nrofHostGroups = 4
 
 # Common settings for all groups
 Group.movementModel = ShortestPathMapBasedMovement
-Group.router = EpidemicRouter
+Group.router = [\
+	EpidemicRouter;\
+	EpidemicRouter;\
+	EpidemicRouter;\
+	ProphetRouter;\
+	ProphetRouter;\
+	ProphetRouter;\
+	]
 Group.bufferSize = 5M
 Group.waitTime = 0, 120
 # All nodes have the bluetooth interface
@@ -113,7 +120,7 @@ Events1.interval = 25,35
 Events1.size = 500k,1M
 # Indexes of nodes which can create these messages, all the moving cars but not the hospitals. NOTE: Upper bound is exclusive
 Events1.hosts = 3,23
-# The two hospitals are the destinations
+# The hospitals are the destinations
 Events1.tohosts = 0,3
 # Message ID prefix
 Events1.prefix = M
@@ -121,7 +128,7 @@ Events1.prefix = M
 
 ## Movement model settings
 # seed for movement models' pseudo random number generator (default = 0)
-MovementModel.rngSeed = 1
+MovementModel.rngSeed = [1;2;0;4;6;5]
 # World's size for Movement Models without implicit size (width, height; meters)
 MovementModel.worldSize = 4500, 3400
 # How long time to move hosts in the world before real simulation
@@ -142,7 +149,15 @@ Report.nrofReports = 2
 # length of the warm up period (simulated seconds)
 Report.warmup = 0
 # default directory of reports (can be overridden per Report with output setting)
-Report.reportDir = reports/
+Report.reportDir = [\
+	reports/epidemic/run0;\
+	reports/epidemic/run1;\
+	reports/epidemic/run2;\
+	reports/prophet/run0;\
+	reports/prophet/run1;\
+	reports/prophet/run2\
+	]
+
 # Report classes to load
 Report.report1 = MessageStatsReport
 Report.report2 = ContactTimesReport
